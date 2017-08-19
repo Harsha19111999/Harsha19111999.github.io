@@ -1,0 +1,155 @@
+<html>
+	<head>
+		<title>
+			My WebVR Project 
+		</title>
+		<script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script> 
+		<script src = "https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
+	</head>
+	<body>
+	<a-scene>
+		<!-- This is for snow -->
+		<a-entity position="0 0 -15" particle-system="preset: rain" id = "rain1" scale = "10 10 10" size ="1000"></a-entity>
+		<a-entity position="-100 0 -15" particle-system="preset: rain" id = "rain2" scale = "10 10 10" size ="1000"></a-entity>
+		<a-entity position="100 0 -15" particle-system="preset: rain" id = "rain3" scale = "10 10 10" size ="1000"></a-entity>
+		<a-entity position="200 0 -15" particle-system="preset: rain" id = "rain4" scale = "10 10 10" size ="1000"></a-entity>
+		<a-entity position="-200 0 -15" particle-system="preset: rain" id = "rain5" scale = "10 10 10" size ="1000"></a-entity>
+
+		<!-- This is the 360 image for sky -->
+		<a-sky src = "lake.jpg"> </a-sky>
+
+		<!-- This is the plane for ground -->
+		<a-plane color = "gray" height = "10000" width = "10000" rotation = "-90 0 0"> </a-plane>
+
+		<!-- This is for the camera with controls-->
+		<a-entity position = "1000 200 0" rotation = "0 90 0" camera look-controls wasd-controls="acceleration: 10000" id = "camera">
+		<a-camera></a-camera>
+		</a-entity>
+		
+		
+		<!-- Now we build the road at the middle leaving some margin -->
+		<a-plane src = "road.jpg" position = "0 5 5" height = "10000" width = "500" rotation = "-90 90 0"> </a-plane>
+
+	
+		<!-- This is for the 1st building -->
+		<a-assets>
+		<a-asset-item id = "mtl-building1" src="mnogohome/building.mtl"></a-asset-item>
+		<a-asset-item id ="obj-building1" src="mnogohome/building.obj"></a-asset-item>
+		</a-assets>
+		<a-entity obj-model="mtl:#mtl-building1; obj:#obj-building1" position="0 0 1000"
+		rotation = "-90 0 0" scale = "0.5 0.5 0.5" id = "building1"> </a-entity>
+
+		<!-- This is for the 2nd building -->
+		<a-assets>
+		<a-asset-item id = "dae-building2" src="house.dae"></a-asset-item>
+		</a-assets>
+		<a-collada-model src="#dae-building2" position="-800 0 50" rotation = "0 0 0" scale = "100 100 100" id = "building2"></a-collada-model>
+
+			<!-- This is for the 3rd building -->
+		<a-entity obj-model="mtl:#mtl-building1; obj:#obj-building1" position="2000 0 1000"
+		rotation = "-90 0 0" scale = "0.5 0.5 0.5" id = "building3"> </a-entity>   
+		
+
+		<!-- This is for the 1st car -->
+		<a-assets>
+		<a-asset-item id = "mtl-car1" src="BMW X5 4.mtl"></a-asset-item>
+		<a-asset-item id ="obj-car1" src="BMW X5 4.obj"></a-asset-item>
+		</a-assets>
+		<a-entity obj-model="mtl:#mtl-car1; obj:#obj-car1" rotation = "0 0 0" scale = "1.5 1.5 1.5" id = "car1">
+			<a-animation attribute = "position"
+				dur="30000"
+               fill="forwards"
+               from="5000 0 150"
+               to="-5000 0 150"
+               repeat="indefinite">
+			</a-animation>
+		</a-entity> 
+
+
+		<!-- This is for the 2nd car -->
+		<a-assets>
+		<a-asset-item id = "mtl-car2" src="Bugatti-Veyron.mtl" color = "red"></a-asset-item>
+		<a-asset-item id ="obj-car2" src="Bugatti-Veyron.obj"></a-asset-item>
+		</a-assets>
+		<a-entity obj-model="mtl:#mtl-car2; obj:#obj-car2"  rotation = "0 0 0" scale = "0.35 0.35 0.35" id = "car2">
+			<a-animation attribute = "position"
+				dur="27000"
+               fill="forwards"
+               from="4000 50 75"
+               to="-5000 50 75"
+               repeat="indefinite">
+			</a-animation>
+		</a-entity> 
+
+		<!-- This is for 3rd car -->
+		<a-assets>
+		<a-asset-item id = "mtl-car3" src="LEGO_CAR_B2.mtl"></a-asset-item>
+		<a-asset-item id ="obj-car3" src="LEGO_CAR_B2.obj"></a-asset-item>
+		</a-assets>
+		<a-entity obj-model="mtl:#mtl-car3; obj:#obj-car3" rotation = "0 -90 0" scale = "7 7 7" id = "car3">
+			<a-animation attribute = "position"
+				dur="21000"
+               fill="forwards"
+               from="2000 0 90"
+               to="-5000 0 90"
+               repeat="indefinite">
+			</a-animation>
+		</a-entity> 
+
+		<!-- This is for the 4th car -->
+		<a-entity obj-model="mtl:#mtl-car3; obj:#obj-car3" rotation = "0 90 0" scale = "7 7 7" id = "car4">
+			<a-animation attribute = "position"
+				dur="30000"
+               fill="forwards"
+               from="-5000 0 -90"
+               to="5000 0 -90"
+               repeat="indefinite">
+			</a-animation>
+		</a-entity>
+
+		<!-- This is the road which leads to the airport -->
+		<a-plane src = "road.jpg" position = "2723.066 5 -2940.524" height = "6000" width = "500" rotation = "-90 90 -60"> </a-plane>
+
+
+		<!-- This is the bridge which is near the airport -->
+		<a-assets>
+		<a-asset-item id = "dae-bridge" src="bridge.dae"></a-asset-item>
+		</a-assets>
+		<a-collada-model src="#dae-bridge" position="1982 0 -3140" rotation = "0 20 0" scale = "25 25 25" id = "bridge"></a-collada-model>   
+
+
+		<!-- This is for the aeroplane -->
+		<a-assets>
+		<a-asset-item id = "mtl-plane1" src="Low Poly Spaceship.mtl"></a-asset-item>
+		<a-asset-item id ="obj-plane1" src="Low Poly Spaceship.obj"></a-asset-item>
+		</a-assets>
+		<a-entity obj-model="mtl:#mtl-plane1; obj:#obj-plane1" rotation = "10 160 0" scale = "150 150 150" id = "plane1">
+			<a-animation attribute = "position"
+				dur="30000"
+               fill="forwards"
+               from="-2500 2000 4000"
+               to="500 1800 -5000"
+               repeat="indefinite">
+			</a-animation>
+		</a-entity>
+		 
+		 <!-- 2nd aeroplane -->
+		<a-entity obj-model="mtl:#mtl-plane1; obj:#obj-plane1" rotation = "0 -90 0" scale = "150 150 150" id = "plane2">
+			<a-animation attribute = "position"
+				dur="30000"
+               fill="forwards"
+               from="5000 2000 -1000"
+               to="-5000 1800 -1000"
+               repeat="indefinite">
+			</a-animation>
+		</a-entity>
+
+		<!-- This is for the airport -->
+		<a-assets>
+		<a-asset-item id = "dae-airport" src="airport.dae"></a-asset-item>
+		</a-assets>
+		<a-collada-model src="#dae-airport" position="1057.985 0 -3153" rotation = "0 30 0" scale = "2 10 2" id = "airport"></a-collada-model>  
+	</a-scene>
+	</body>
+</html>
+
